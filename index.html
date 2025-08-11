@@ -74,19 +74,18 @@
       user-select: none;
     }
     .project {
-  width: 90%;         /* Immer 50% Breite vom Container */
-  min-width: 700px;   /* Mindestbreite, z.B. 400px */
-  margin: 0 auto 2rem; /* zentriert das Element horizontal und Abstand unten */
-  box-sizing: border-box;
-  background-color: #1e1e1e;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 0 15px rgba(0,0,0,0.7);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
+      width: 90%;
+      min-width: 700px;
+      margin: 0 auto 2rem;
+      box-sizing: border-box;
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
     .project h3 {
       color: #61dafb;
       margin: 0;
@@ -166,6 +165,15 @@
     }
     .steam-account a:hover {
       text-decoration: underline;
+    }
+
+    /* Media Query für kleine Bildschirme (Smartphones, Tablets) */
+    @media (max-width: 700px) {
+      .project {
+        width: 95%;
+        min-width: auto;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
