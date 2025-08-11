@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Monomorto</title>
+  <title>Monomorto - Projekte</title>
   <style>
     body {
       background-color: #121212;
@@ -11,33 +11,51 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      display: flex;
-      flex-direction: column;
       min-height: 100vh;
     }
-    header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      font-size: 3rem;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-    }
     main {
-      flex: 1;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+      color: #eee;
+    }
+    h1 {
+      text-align: center;
+      color: #61dafb;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+    .project {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 2rem;
-      padding: 0 1rem;
+      gap: 1rem;
     }
-    .button-group {
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 600px;
+    .project h2 {
+      color: #61dafb;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    .preview {
+      max-width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      background: transparent; /* kein Hintergrund */
+    }
+    .youtube-preview iframe {
       width: 100%;
+      max-width: 480px;
+      height: 270px;
+      border: none;
+      display: block;
+      margin: 0 auto;
+      border-radius: 10px;
+      background: transparent !important;
     }
     a.button {
       background-color: #1f1f1f;
@@ -47,73 +65,63 @@
       padding: 1rem 2rem;
       font-size: 1.25rem;
       border-radius: 8px;
-      flex: 1 1 200px;
       text-align: center;
       transition: background-color 0.3s, border-color 0.3s;
       user-select: none;
+      display: inline-block;
+      max-width: 250px;
+      margin-top: 1rem;
     }
     a.button:hover {
       background-color: #333;
       border-color: #61dafb;
       color: #61dafb;
     }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: auto;
-      position: sticky;
-      bottom: 0;
-      background-color: #121212;
-    }
-    .app-section {
-      flex: 1 1 100%;
-      background-color: #1e1e1e;
-      border-radius: 10px;
-      padding: 1rem 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    }
-    .app-section h2 {
-      margin-top: 0;
-      color: #61dafb;
-      font-weight: 600;
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .app-section a.version-link {
-      display: inline-block;
-      margin-top: 0.5rem;
+    .version-link {
       color: #bbb;
       font-size: 0.95rem;
       text-decoration: underline;
+      display: inline-block;
+      margin-top: 0.5rem;
+      text-align: center;
     }
-    .app-section a.version-link:hover {
+    .version-link:hover {
       color: #61dafb;
     }
   </style>
 </head>
 <body>
-  <header>Monomorto</header>
   <main>
-    <div class="button-group">
-      <a href="https://www.youtube.com/@MonomortoPiano" target="_blank" rel="noopener noreferrer" class="button" aria-label="YouTube Kanal Monomorto Piano">
-        YouTube Kanal
-      </a>
-      <div class="app-section">
-        <h2>Steel Darts App</h2>
-        <a href="https://play.google.com/store/apps/details?id=com.mydarts.darts&hl=de&pli=1" target="_blank" rel="noopener noreferrer" class="button" style="margin-bottom:0;">
-          Zur App im Google Play Store
-        </a>
-        <br />
-        <a href="https://sites.google.com/view/steeldarts-monomorto-versionen/startseite" target="_blank" rel="noopener noreferrer" class="version-link" aria-label="Versionsverlauf der Steel Darts App">
-          Versionsverlauf der App ansehen
-        </a>
+    <h1>Projekte</h1>
+
+    <section class="project">
+      <h2>YouTube Kanal</h2>
+      <div class="preview youtube-preview">
+        <iframe 
+          src="https://www.youtube.com/embed/0NjRV_-nlpU?modestbranding=1&rel=0&showinfo=0" 
+          title="YouTube Video Vorschau" 
+          allowfullscreen 
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          style="background: transparent;">
+        </iframe>
       </div>
-    </div>
+      <p>Mein YouTube Kanal "Monomorto Piano" mit Klavier-Videos und mehr.</p>
+      <a href="https://www.youtube.com/@MonomortoPiano" target="_blank" rel="noopener noreferrer" class="button" aria-label="YouTube Kanal Monomorto Piano">
+        Zum YouTube Kanal
+      </a>
+    </section>
+
+    <section class="project">
+      <h2>Steel Darts App</h2>
+      <p>Meine Steel Darts App für Android mit vielen Features.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.mydarts.darts&hl=de&pli=1" target="_blank" rel="noopener noreferrer" class="button">
+        Zur App im Google Play Store
+      </a>
+      <a href="https://sites.google.com/view/steeldarts-monomorto-versionen/startseite" target="_blank" rel="noopener noreferrer" class="version-link" aria-label="Versionsverlauf der Steel Darts App">
+        Versionsverlauf der App ansehen
+      </a>
+    </section>
   </main>
-  <footer>
-    &copy; 2025 Monomorto
-  </footer>
 </body>
 </html>
