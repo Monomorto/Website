@@ -267,15 +267,11 @@
 
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        // Alle Tabs deaktivieren
         tabs.forEach(t => {
           t.classList.remove('active');
           t.setAttribute('aria-selected', 'false');
         });
-        // Alle Inhalte verstecken
         contents.forEach(c => c.classList.remove('active'));
-
-        // Aktiven Tab und Inhalt anzeigen
         tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
         const target = tab.getAttribute('aria-controls');
@@ -294,9 +290,7 @@
       modalContent.innerHTML = `
         <h2>Impressum</h2>
         <p><strong>Monomorto</strong><br>
-        Martin Theurer<br>
-        Umgebung Schwäbisch Hall<br>
-        Deutschland</p>
+        Kontakt per E-Mail: <a href="mailto:deine-email@beispiel.de" style="color:#61dafb;">monomorto99@gmail.com</a></p>
         <p>Diese Webseite dient rein privaten Zwecken und ist nicht kommerziell.</p>
       `;
       modal.style.display = 'block';
