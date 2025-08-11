@@ -185,21 +185,32 @@
       list-style: none;
       padding: 0;
       margin: 0;
+      display: grid;
+      grid-template-columns: auto 90px; /* mehr Platz für Stunden */
+      column-gap: 2.5rem; /* größerer Abstand */
+      align-items: center;
+      font-size: 1.1rem; /* Schrift etwas größer */
+      line-height: 1.6; /* Zeilenhöhe für mehr Abstand */
     }
     .top-games li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #333;
+      padding: 10.5rem 0;
+      /* keine sichtbaren Linien */
+      display: contents;
+    }
+    .top-games li > .game-info {
       display: flex;
       align-items: center;
+      gap: 12px; /* Abstand zwischen Icon und Name vergrößert */
+      color: #ccc;
+    }
+    .top-games li > .playtime {
+      text-align: right;
+      color: #ccc;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
     }
     .top-games li:last-child {
-      border-bottom: none;
-    }
-    .top-games li img {
-      margin-right: 8px;
-      border-radius: 4px;
-      width: 24px;
-      height: 24px;
+      /* keine Linie */
     }
 
     @media (max-width: 700px) {
@@ -297,6 +308,13 @@
       <div class="top-games">
         <h4>Meistgespielte Spiele</h4>
         <ul id="games-list">
+          <li>
+            <div class="game-info">
+              <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
+              Tanki Online
+            </div>
+            <div class="playtime">2360 h</div>
+          </li>
           <li>Lade Daten...</li>
         </ul>
       </div>
@@ -365,50 +383,56 @@
       .then(response => response.json())
       .then(steamData => {
         const gamesList = document.getElementById('games-list');
-        gamesList.innerHTML = '';
+        // Ersetze Lade-Platzhalter und Tanki Online Eintrag
+        gamesList.innerHTML = `
+          <li>
+            <div class="game-info">
+              <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
+              Tanki Online
+            </div>
+            <div class="playtime">2360 h</div>
+          </li>
+        `;
+
         if (steamData && steamData.length > 0) {
           steamData.forEach(game => {
             const li = document.createElement('li');
             const iconUrl = `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`;
             const hours = Math.round(game.playtime_forever / 60);
             li.innerHTML = `
-              <img src="${iconUrl}" alt="${game.name} Icon">
-              ${game.name} – ${hours} Stunden
+              <div class="game-info">
+                <img src="${iconUrl}" alt="${game.name} Icon" style="width:24px; height:24px; border-radius:4px;">
+                ${game.name}
+              </div>
+              <div class="playtime">${hours} h</div>
             `;
             gamesList.appendChild(li);
           });
         } else {
-          gamesList.innerHTML = '<li>Keine Steam-Daten verfügbar.</li>';
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <div class="game-info">Keine Steam-Daten verfügbar.</div>
+            <div class="playtime"></div>
+          `;
+          gamesList.appendChild(li);
         }
-
-        // Jetzt Tanki Online Spielzeit ergänzen
-        fetch('https://tankibot.com/api/top?type=timeplayed')
-          .then(response => response.json())
-          .then(tankiData => {
-            const player = tankiData.result.find(p => p.username.toLowerCase() === 'monomartial'.toLowerCase());
-            if (player) {
-              const hours = Math.floor(player.timePlayed / 60);
-              const minutes = player.timePlayed % 60;
-              const li = document.createElement('li');
-              li.innerHTML = `<img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; margin-right:8px; border-radius:4px;">Tank Online Spielzeit – ${hours} Stunden ${minutes} Minuten`;
-              gamesList.appendChild(li);
-            } else {
-              // Falls Spieler nicht gefunden, optionale Meldung
-              const li = document.createElement('li');
-              li.textContent = 'Tanki Online Spieler nicht gefunden';
-              gamesList.appendChild(li);
-            }
-          })
-          .catch(err => {
-            console.error('Fehler beim Laden der Tanki Online Daten:', err);
-            const li = document.createElement('li');
-            li.textContent = 'Fehler beim Laden der Tanki Online Daten';
-            gamesList.appendChild(li);
-          });
       })
       .catch(err => {
         console.error('Fehler beim Laden der Steam Daten:', err);
-        document.getElementById('games-list').innerHTML = '<li>Fehler beim Laden der Steam-Daten.</li>';
+        const gamesList = document.getElementById('games-list');
+        gamesList.innerHTML = `
+          <li>
+            <div class="game-info">
+              <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
+              Tanki Online
+            </div>
+            <div class="playtime">2360 h</div>
+          </li>
+          <li>
+            <div class="game-info">Fehler beim Laden der Steam-Daten.</div>
+            <div class="playtime"></div>
+          </li>
+        `;
       });
   </script>
 </body>
