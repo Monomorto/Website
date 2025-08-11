@@ -167,12 +167,34 @@
       text-decoration: underline;
     }
 
-    /* Media Query für kleine Bildschirme (Smartphones, Tablets) */
+    /* Breitenanpassung für die Projekte */
     @media (max-width: 700px) {
       .project {
         width: 95%;
         min-width: auto;
         padding: 1rem;
+      }
+    }
+
+    /* Vertikale Menüleiste auf kleinen Bildschirmen */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem 1rem;
+      }
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0;
+      }
+      nav button {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 0;
+        font-size: 1.2rem;
       }
     }
   </style>
