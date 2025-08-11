@@ -172,12 +172,14 @@
       padding: 1rem;
       max-width: 500px;
       margin: 0 auto;
-      text-align: center;
+      text-align: left;
       box-shadow: 0 0 8px rgba(97,218,251,0.3);
+      color: #ccc;
     }
     .top-games h4 {
       margin: 0 0 1rem;
       color: #61dafb;
+      text-align: center;
     }
     .top-games ul {
       list-style: none;
@@ -187,10 +189,17 @@
     .top-games li {
       padding: 0.5rem 0;
       border-bottom: 1px solid #333;
-      color: #ccc;
+      display: flex;
+      align-items: center;
     }
     .top-games li:last-child {
       border-bottom: none;
+    }
+    .top-games li img {
+      margin-right: 8px;
+      border-radius: 4px;
+      width: 24px;
+      height: 24px;
     }
 
     @media (max-width: 700px) {
@@ -360,7 +369,12 @@
         if (data && data.length > 0) {
           data.forEach(game => {
             const li = document.createElement('li');
-            li.textContent = `${game.name} – ${game.playtime} Stunden`;
+            const iconUrl = `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`;
+            const hours = Math.round(game.playtime_forever / 60);
+            li.innerHTML = `
+              <img src="${iconUrl}" alt="${game.name} Icon">
+              ${game.name} – ${hours} Stunden
+            `;
             gamesList.appendChild(li);
           });
         } else {
