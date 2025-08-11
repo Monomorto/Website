@@ -69,7 +69,6 @@
       padding-bottom: 0.3rem;
       border-bottom: 3px solid #61dafb;
       color: #61dafb;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       letter-spacing: 0.05em;
       user-select: none;
     }
@@ -203,10 +202,15 @@
       align-items: center;
       text-align: center;
     }
-    .project:nth-of-type(2) .version-link {
-      display: block;
-      margin-top: 0.5rem;
+
+    /* YouTube Sektion mittig */
+    .project:nth-of-type(1) {
+      align-items: center;
       text-align: center;
+    }
+    .project:nth-of-type(1) .button {
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
@@ -254,9 +258,8 @@
 
     <section id="gaming" class="tab-content" role="tabpanel" aria-labelledby="tab-gaming">
       <h2 class="section-title">Gaming</h2>
-
       <div class="steam-account">
-        <p><strong>Startseite &gt; Account</strong></p>
+        <p><strong>Steam</strong></p>
         <p>Account von <a href="https://steamcommunity.com/profiles/76561199482328245" target="_blank" rel="noopener noreferrer">Monomorto</a></p>
       </div>
     </section>
@@ -301,7 +304,7 @@
       modalContent.innerHTML = `
         <h2>Impressum</h2>
         <p><strong>Monomorto</strong><br>
-        Kontakt per E-Mail: <a href="mailto:deine-email@beispiel.de" style="color:#61dafb;">monomorto99@gmail.com</a></p>
+        Kontakt per E-Mail: <a href="mailto:monomorto99@gmail.com" style="color:#61dafb;">monomorto99@gmail.com</a></p>
         <p>Diese Webseite dient rein privaten Zwecken und ist nicht kommerziell.</p>
       `;
       modal.style.display = 'block';
