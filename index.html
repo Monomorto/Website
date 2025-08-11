@@ -1,91 +1,119 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monomorto</title>
-    <style>
-        /* Darkmode Farben */
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
-            color: #f0f0f0;
-            text-align: center;
-            padding: 0;
-        }
-
-        header {
-            padding: 50px 20px;
-            background: linear-gradient(135deg, #1f1f1f, #2b2b2b);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.7);
-        }
-
-        h1 {
-            font-size: 3em;
-            margin: 0;
-            color: #ff5252;
-            text-shadow: 0 0 10px rgba(255,82,82,0.7);
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 10px rgba(255,82,82,0.7); }
-            to { text-shadow: 0 0 20px rgba(255,82,82,1); }
-        }
-
-        p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.6;
-            color: #cccccc;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
-            font-size: 1em;
-            color: white;
-            background: #ff5252;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            background: #ff7676;
-            transform: translateY(-2px);
-        }
-
-        footer {
-            margin-top: 50px;
-            padding: 15px;
-            font-size: 0.9em;
-            background: #1a1a1a;
-            color: #777;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monomorto</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #eee;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    .button-group {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+      width: 100%;
+    }
+    a.button {
+      background-color: #1f1f1f;
+      border: 2px solid #444;
+      color: #eee;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      border-radius: 8px;
+      flex: 1 1 200px;
+      text-align: center;
+      transition: background-color 0.3s, border-color 0.3s;
+      user-select: none;
+    }
+    a.button:hover {
+      background-color: #333;
+      border-color: #61dafb;
+      color: #61dafb;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: auto;
+      position: sticky;
+      bottom: 0;
+      background-color: #121212;
+    }
+    .app-section {
+      flex: 1 1 100%;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    .app-section h2 {
+      margin-top: 0;
+      color: #61dafb;
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .app-section a.version-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #bbb;
+      font-size: 0.95rem;
+      text-decoration: underline;
+    }
+    .app-section a.version-link:hover {
+      color: #61dafb;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Monomorto</h1>
-        <p>Willkommen auf meiner Darkmode-Homepage – minimalistisch, modern und stylisch.</p>
-        <a href="#" class="btn">Mehr erfahren</a>
-    </header>
-
-    <section>
-        <p>Hier könnte deine Geschichte, dein Projekt oder deine Ideen stehen.  
-        Nutze diesen Platz, um Besuchern zu zeigen, worum es bei Monomorto geht.  
-        Alles ist im Darkmode gehalten, um die Augen zu schonen und einen coolen Look zu bewahren.</p>
-    </section>
-
-    <footer>
-        &copy; 2025 Monomorto – Alle Rechte vorbehalten
-    </footer>
+  <header>Monomorto</header>
+  <main>
+    <div class="button-group">
+      <a href="https://www.youtube.com/@MonomortoPiano" target="_blank" rel="noopener noreferrer" class="button" aria-label="YouTube Kanal Monomorto Piano">
+        YouTube Kanal
+      </a>
+      <div class="app-section">
+        <h2>Steel Darts App</h2>
+        <a href="https://play.google.com/store/apps/details?id=com.mydarts.darts&hl=de&pli=1" target="_blank" rel="noopener noreferrer" class="button" style="margin-bottom:0;">
+          Zur App im Google Play Store
+        </a>
+        <br />
+        <a href="https://sites.google.com/view/steeldarts-monomorto-versionen/startseite" target="_blank" rel="noopener noreferrer" class="version-link" aria-label="Versionsverlauf der Steel Darts App">
+          Versionsverlauf der App ansehen
+        </a>
+      </div>
+    </div>
+  </main>
+  <footer>
+    &copy; 2025 Monomorto
+  </footer>
 </body>
 </html>
-
