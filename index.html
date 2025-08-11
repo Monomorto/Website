@@ -150,7 +150,7 @@
       border-radius: 10px;
       padding: 1rem 1.5rem;
       max-width: 500px;
-      margin: 0 auto;
+      margin: 0 auto 1rem;
       box-shadow: 0 0 8px rgba(97,218,251,0.5);
       font-size: 1.1rem;
       line-height: 1.5;
@@ -165,8 +165,34 @@
     .steam-account a:hover {
       text-decoration: underline;
     }
+    .top-games {
+      background-color: #1a1a1a;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 0 8px rgba(97,218,251,0.3);
+    }
+    .top-games h4 {
+      margin: 0 0 1rem;
+      color: #61dafb;
+    }
+    .top-games ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .top-games li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #333;
+      color: #ccc;
+    }
+    .top-games li:last-child {
+      border-bottom: none;
+    }
 
-    /* Breitenanpassung für die Projekte */
     @media (max-width: 700px) {
       .project {
         width: 95%;
@@ -175,7 +201,6 @@
       }
     }
 
-    /* Vertikale Menüleiste auf kleinen Bildschirmen */
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -197,13 +222,11 @@
       }
     }
 
-    /* Steel Darts App Sektion komplett mittig */
     .project:nth-of-type(2) {
       align-items: center;
       text-align: center;
     }
 
-    /* YouTube Sektion mittig */
     .project:nth-of-type(1) {
       align-items: center;
       text-align: center;
@@ -262,6 +285,12 @@
         <p><strong>Steam</strong></p>
         <p>Account von <a href="https://steamcommunity.com/profiles/76561199482328245" target="_blank" rel="noopener noreferrer">Monomorto</a></p>
       </div>
+      <div class="top-games">
+        <h4>Meistgespielte Spiele</h4>
+        <ul id="games-list">
+          <li>Lade Daten...</li>
+        </ul>
+      </div>
     </section>
   </main>
 
@@ -276,9 +305,9 @@
   </div>
 
   <script>
+    // Tabs
     const tabs = document.querySelectorAll('nav button');
     const contents = document.querySelectorAll('.tab-content');
-
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         tabs.forEach(t => {
@@ -293,12 +322,12 @@
       });
     });
 
+    // Modal
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
     const openImpressum = document.getElementById('open-impressum');
     const openDatenschutz = document.getElementById('open-datenschutz');
     const closeModal = document.getElementById('close-modal');
-
     openImpressum.addEventListener('click', (e) => {
       e.preventDefault();
       modalContent.innerHTML = `
@@ -309,7 +338,6 @@
       `;
       modal.style.display = 'block';
     });
-
     openDatenschutz.addEventListener('click', (e) => {
       e.preventDefault();
       modalContent.innerHTML = `
@@ -320,16 +348,29 @@
       `;
       modal.style.display = 'block';
     });
+    closeModal.addEventListener('click', () => modal.style.display = 'none');
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 
-    closeModal.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-      }
-    });
+    // Steam API: Meistgespielte Spiele laden
+    fetch('https://steamworker.monomorto99.workers.dev/')
+      .then(response => response.json())
+      .then(data => {
+        const gamesList = document.getElementById('games-list');
+        gamesList.innerHTML = '';
+        if (data && data.length > 0) {
+          data.forEach(game => {
+            const li = document.createElement('li');
+            li.textContent = `${game.name} – ${game.playtime} Stunden`;
+            gamesList.appendChild(li);
+          });
+        } else {
+          gamesList.innerHTML = '<li>Keine Daten verfügbar.</li>';
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('games-list').innerHTML = '<li>Fehler beim Laden.</li>';
+      });
   </script>
 </body>
 </html>
