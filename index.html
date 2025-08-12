@@ -90,13 +90,6 @@
       margin: 0;
       font-size: 1.8rem;
     }
-    .project ul {
-      margin: 0;
-      padding-left: 1.2rem;
-    }
-    .project ul li {
-      margin-bottom: 0.5rem;
-    }
     .preview {
       max-width: 100%;
       border-radius: 10px;
@@ -193,19 +186,21 @@
       padding: 0;
       margin: 0;
       display: grid;
-      grid-template-columns: auto 90px;
-      column-gap: 2.5rem;
+      grid-template-columns: auto 90px; /* mehr Platz für Stunden */
+      column-gap: 2.5rem; /* größerer Abstand */
       align-items: center;
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1.1rem; /* Schrift etwas größer */
+      line-height: 1.6; /* Zeilenhöhe für mehr Abstand */
     }
     .top-games li {
+      padding: 10.5rem 0;
+      /* keine sichtbaren Linien */
       display: contents;
     }
     .top-games li > .game-info {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 12px; /* Abstand zwischen Icon und Name vergrößert */
       color: #ccc;
     }
     .top-games li > .playtime {
@@ -214,6 +209,10 @@
       font-variant-numeric: tabular-nums;
       white-space: nowrap;
     }
+    .top-games li:last-child {
+      /* keine Linie */
+    }
+
     @media (max-width: 700px) {
       .project {
         width: 95%;
@@ -221,6 +220,7 @@
         padding: 1rem;
       }
     }
+
     @media (max-width: 600px) {
       header {
         flex-direction: column;
@@ -241,6 +241,20 @@
         font-size: 1.2rem;
       }
     }
+
+    .project:nth-of-type(2) {
+      align-items: center;
+      text-align: center;
+    }
+
+    .project:nth-of-type(1) {
+      align-items: center;
+      text-align: center;
+    }
+    .project:nth-of-type(1) .button {
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 <body>
@@ -249,25 +263,39 @@
     <nav>
       <button id="tab-projekte" class="active" aria-controls="projekte" aria-selected="true">Projekte</button>
       <button id="tab-gaming" aria-controls="gaming" aria-selected="false">Gaming</button>
-      <button id="tab-darts" aria-controls="darts" aria-selected="false">Darts</button>
     </nav>
   </header>
 
   <main>
     <section id="projekte" class="tab-content active" role="tabpanel" aria-labelledby="tab-projekte">
       <h2 class="section-title">Projekte</h2>
+
       <section class="project">
         <h3>YouTube Kanal</h3>
         <div class="preview youtube-preview">
-          <iframe src="https://www.youtube.com/embed/0NjRV_-nlpU?modestbranding=1&rel=0&showinfo=0" allowfullscreen></iframe>
+          <iframe 
+            src="https://www.youtube.com/embed/0NjRV_-nlpU?modestbranding=1&rel=0&showinfo=0" 
+            title="YouTube Video Vorschau" 
+            allowfullscreen 
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            style="background: transparent;">
+          </iframe>
         </div>
-        <a href="https://www.youtube.com/@MonomortoPiano" target="_blank" class="button">Zum YouTube Kanal</a>
+        <a href="https://www.youtube.com/@MonomortoPiano" target="_blank" rel="noopener noreferrer" class="button" aria-label="YouTube Kanal Monomorto Piano">
+          Zum YouTube Kanal
+        </a>
       </section>
+
       <section class="project">
         <h3>Steel Darts App</h3>
         <p>Meine Steel Darts App für Android.</p>
-        <a href="https://play.google.com/store/apps/details?id=com.mydarts.darts" target="_blank" class="button">Zur App im Google Play Store</a>
-        <a href="https://sites.google.com/view/steeldarts-monomorto-versionen/startseite" target="_blank" class="version-link">Versionsverlauf der App ansehen</a>
+        <a href="https://play.google.com/store/apps/details?id=com.mydarts.darts&hl=de&pli=1" target="_blank" rel="noopener noreferrer" class="button">
+          Zur App im Google Play Store
+        </a>
+        <a href="https://sites.google.com/view/steeldarts-monomorto-versionen/startseite" target="_blank" rel="noopener noreferrer" class="version-link" aria-label="Versionsverlauf der Steel Darts App">
+          Versionsverlauf der App ansehen
+        </a>
       </section>
     </section>
 
@@ -275,48 +303,27 @@
       <h2 class="section-title">Gaming</h2>
       <div class="steam-account">
         <p><strong>Steam</strong></p>
-        <p>Account von <a href="https://steamcommunity.com/profiles/76561199482328245" target="_blank">Monomorto</a></p>
+        <p>Account von <a href="https://steamcommunity.com/profiles/76561199482328245" target="_blank" rel="noopener noreferrer">Monomorto</a></p>
       </div>
       <div class="top-games">
         <h4>Meistgespielte Spiele</h4>
         <ul id="games-list">
           <li>
             <div class="game-info">
-              <img src="https://tankionline.com/favicon.ico" style="width:24px; height:24px;">
-              <a href="https://ratings.tankionline.com/de/user/Monomartial" target="_blank">Tanki Online</a>
+              <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
+              Tanki Online
             </div>
-            <div class="playtime">2361 h</div>
+            <div class="playtime">2360 h</div>
           </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="darts" class="tab-content" role="tabpanel" aria-labelledby="tab-darts">
-      <h2 class="section-title">Darts</h2>
-      <div class="project">
-        <h3>180 Counter</h3>
-        <ul>
-          <li>01.08.2025</li>
-        </ul>
-      </div>
-      <div class="project">
-        <h3>171 Counter</h3>
-        <ul>
-          <li>08.08.2025</li>
-        </ul>
-      </div>
-      <div class="project">
-        <h3>High Finishes</h3>
-        <ul>
-          <li>100 – 08.08.2025 (20 D20 D20)</li>
+          <li>Lade Daten...</li>
         </ul>
       </div>
     </section>
   </main>
 
-  <footer style="text-align:center; padding:1rem 0; background:#1e1e1e; color:#777; font-size:0.9rem;">
-    <a href="#" id="open-impressum" style="color:#61dafb; margin-right:1rem;">Impressum</a>
-    <a href="#" id="open-datenschutz" style="color:#61dafb;">Datenschutz</a>
+  <footer style="text-align:center; padding:1rem 0; background:#1e1e1e; color:#777; font-size:0.9rem; user-select:none;">
+    <a href="#" id="open-impressum" style="color:#61dafb; text-decoration:none; margin-right:1rem;">Impressum</a>
+    <a href="#" id="open-datenschutz" style="color:#61dafb; text-decoration:none;">Datenschutz</a>
   </footer>
 
   <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); color:#eee; overflow:auto; padding:2rem; z-index:1000;">
@@ -350,12 +357,22 @@
     const closeModal = document.getElementById('close-modal');
     openImpressum.addEventListener('click', (e) => {
       e.preventDefault();
-      modalContent.innerHTML = "<h2>Impressum</h2><p><strong>Monomorto</strong><br>Kontakt per E-Mail: <a href='mailto:monomorto99@gmail.com' style='color:#61dafb;'>monomorto99@gmail.com</a></p><p>Diese Webseite dient rein privaten Zwecken und ist nicht kommerziell.</p>";
+      modalContent.innerHTML = `
+        <h2>Impressum</h2>
+        <p><strong>Monomorto</strong><br>
+        Kontakt per E-Mail: <a href="mailto:monomorto99@gmail.com" style="color:#61dafb;">monomorto99@gmail.com</a></p>
+        <p>Diese Webseite dient rein privaten Zwecken und ist nicht kommerziell.</p>
+      `;
       modal.style.display = 'block';
     });
     openDatenschutz.addEventListener('click', (e) => {
       e.preventDefault();
-      modalContent.innerHTML = "<h2>Datenschutzerklärung</h2><p>Diese Webseite verwendet ein eingebettetes YouTube-Video...</p>";
+      modalContent.innerHTML = `
+        <h2>Datenschutzerklärung</h2>
+        <p>Diese Webseite verwendet ein eingebettetes YouTube-Video. Beim Abspielen werden möglicherweise Cookies und Tracking-Daten durch YouTube gesetzt. Weitere Informationen findest du in der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:#61dafb;">Datenschutzerklärung von Google</a>.</p>
+        <p>Es werden keine eigenen personenbezogenen Daten auf dieser Webseite erhoben oder gespeichert.</p>
+        <p>Links zu externen Seiten führen zu Angeboten Dritter, für deren Inhalte und Datenschutz ich keine Verantwortung übernehmen kann.</p>
+      `;
       modal.style.display = 'block';
     });
     closeModal.addEventListener('click', () => modal.style.display = 'none');
@@ -366,29 +383,56 @@
       .then(response => response.json())
       .then(steamData => {
         const gamesList = document.getElementById('games-list');
-        gamesList.innerHTML = `<li>
+        // Ersetze Lade-Platzhalter und Tanki Online Eintrag
+        gamesList.innerHTML = `
+          <li>
             <div class="game-info">
-              <img src="https://tankionline.com/favicon.ico" style="width:24px; height:24px;">
-              <a href="https://ratings.tankionline.com/de/user/Monomartial" target="_blank">Tanki Online</a>
+              <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
+              Tanki Online
             </div>
-            <div class="playtime">2361 h</div>
-          </li>`;
+            <div class="playtime">2360 h</div>
+          </li>
+        `;
+
         if (steamData && steamData.length > 0) {
           steamData.forEach(game => {
             const li = document.createElement('li');
             const iconUrl = `https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/${game.appid}/${game.img_icon_url}.jpg`;
             const hours = Math.round(game.playtime_forever / 60);
-            li.innerHTML = `<div class="game-info">
-                <img src="${iconUrl}" style="width:24px; height:24px;">
+            li.innerHTML = `
+              <div class="game-info">
+                <img src="${iconUrl}" alt="${game.name} Icon" style="width:24px; height:24px; border-radius:4px;">
                 ${game.name}
               </div>
-              <div class="playtime">${hours} h</div>`;
+              <div class="playtime">${hours} h</div>
+            `;
             gamesList.appendChild(li);
           });
+        } else {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <div class="game-info">Keine Steam-Daten verfügbar.</div>
+            <div class="playtime"></div>
+          `;
+          gamesList.appendChild(li);
         }
       })
       .catch(err => {
         console.error('Fehler beim Laden der Steam Daten:', err);
+        const gamesList = document.getElementById('games-list');
+        gamesList.innerHTML = `
+          <li>
+            <div class="game-info">
+              <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
+              Tanki Online
+            </div>
+            <div class="playtime">2360 h</div>
+          </li>
+          <li>
+            <div class="game-info">Fehler beim Laden der Steam-Daten.</div>
+            <div class="playtime"></div>
+          </li>
+        `;
       });
   </script>
 </body>
