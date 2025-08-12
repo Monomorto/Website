@@ -311,9 +311,9 @@
           <li>
             <div class="game-info">
               <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
-              Tanki Online
+              <a href="https://ratings.tankionline.com/de/user/Monomartial" target="_blank">Tanki Online</a>
             </div>
-            <div class="playtime">2360 h</div>
+            <div class="playtime">2361 h</div>
           </li>
           <li>Lade Daten...</li>
         </ul>
@@ -383,14 +383,14 @@
       .then(response => response.json())
       .then(steamData => {
         const gamesList = document.getElementById('games-list');
-        // Ersetze Lade-Platzhalter und Tanki Online Eintrag
+        // Ersetze Lade-Platzhalter und Tanki Online Eintrag mit klickbarem Link
         gamesList.innerHTML = `
           <li>
             <div class="game-info">
               <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
-              Tanki Online
+              <a href="https://ratings.tankionline.com/de/user/Monomartial" target="_blank" rel="noopener noreferrer">Tanki Online</a>
             </div>
-            <div class="playtime">2360 h</div>
+            <div class="playtime">2361 h</div>
           </li>
         `;
 
@@ -424,9 +424,9 @@
           <li>
             <div class="game-info">
               <img src="https://tankionline.com/favicon.ico" alt="Tanki Online Icon" style="width:24px; height:24px; border-radius:4px;">
-              Tanki Online
+              <a href="https://ratings.tankionline.com/de/user/Monomartial" target="_blank" rel="noopener noreferrer">Tanki Online</a>
             </div>
-            <div class="playtime">2360 h</div>
+            <div class="playtime">2361 h</div>
           </li>
           <li>
             <div class="game-info">Fehler beim Laden der Steam-Daten.</div>
